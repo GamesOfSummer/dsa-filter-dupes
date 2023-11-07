@@ -10,6 +10,7 @@ import { Coco } from 'chroma-console';
 
 function test(): void {
     const array = [1, 10, -4, 2, 7, 8, -2, 98, 10, 8, 2];
+    array.sort();
 
     Coco.start();
 
