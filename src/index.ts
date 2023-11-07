@@ -21,18 +21,36 @@ function test(): void {
     Coco.log('Old array size - ' + array.length);
     Coco.log(stringHolder);
 
-    const newArray = new Set();
+    const newCountArray = [];
+    const dupeArray = [];
+
     for (let i = 0; i < array.length; i++) {
-        newArray.add(array[i]);
+        if (newCountArray.includes(array[i])) {
+            dupeArray.push(array[i]);
+        } else {
+            newCountArray.push(array[i]);
+        }
     }
 
-    stringHolder = '';
-    for (let i = 0; i < newArray.size; i++) {
-        stringHolder = stringHolder + newArray[i];
+    stringHolder = 'Duped array values - ';
+    for (let i = 0; i < dupeArray.length; i++) {
+        stringHolder = stringHolder + dupeArray[i] + ', ';
     }
 
-    Coco.log('New array size - ' + newArray.size);
+    Coco.log('Duped array size - ' + dupeArray.length);
     Coco.log(stringHolder);
+
+    const finalArray = array.filter((x) => !dupeArray.includes(x));
+
+    stringHolder = 'Final array values - ';
+    for (let i = 0; i < finalArray.length; i++) {
+        stringHolder = stringHolder + finalArray[i] + ', ';
+    }
+
+    Coco.log('Final array size - ' + finalArray.length);
+    Coco.log(stringHolder);
+
+    Coco.end();
 }
 
 consoleStart();
